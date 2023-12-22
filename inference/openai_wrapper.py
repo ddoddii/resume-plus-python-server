@@ -21,6 +21,7 @@ class OpenAIChat:
         messages=[],
     ):
         if "gpt" not in model_name:
+            # TODO: url 주소 숨기기
             openai.api_base = "http://localhost:8000/v1"
         else:
             # openai.api_base = "https://api.openai.com/v1"

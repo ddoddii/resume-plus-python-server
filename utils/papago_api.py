@@ -9,6 +9,8 @@ def translate_text(text, client_id, client_secret):
     
     enc_text = urllib.parse.quote(text)
     data = "source=ko&target=en&text=" + enc_text
+    # TODO: url 정보 삭제
+    # 무슨 서비스 쓰는지 가리는게 좋을 것 같음
     url = "https://openapi.naver.com/v1/papago/n2mt"
     request = urllib.request.Request(url)
     request.add_header("X-Naver-Client-Id", client_id)
@@ -43,6 +45,9 @@ def process_csv_file(batch_size, start_num, file_path, client_id=None, client_se
             df[start:end].to_csv(output_file_path, mode=mode, header=header, index=False, encoding='utf-8')
 
 if __name__ == "__main__":
+    # TODO: delete path info
+    # 개인 로컬 주소 노출
+    # client id 숨기기
     input_file = '/Users/soeun-uhm/yonsei/GDSC/resume-ai-chat/input/question/tech_q_kor.csv'
     output_file_path = 'tech_q_translated.csv'
     client_id_1 = "YAyHAGJ14moEsuqgIONB"

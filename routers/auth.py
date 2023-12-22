@@ -15,6 +15,7 @@ bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl="auth/token")
 
 
+#TODO: 아래 두 정보 모두 .env
 SECRET_KEY = "e67cb6e960b18ce8ec8f683d28997ff83bada88df9321e52079f712c4e4c850e"
 ALGORITHM = "HS256"
 
