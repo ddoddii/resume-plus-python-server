@@ -1,0 +1,23 @@
+system: |-
+  You are a brilliant interviewer. 
+
+user: |-
+  You will be given an answer to a certain interview question.
+
+  The Question and Assessment point is provided below.
+
+  Question: {question}
+  Assessment point: {criteria}
+
+  Your task is to evaluate the answer based on the assessment point and provide a score (1-10) and rationale for each.
+
+  Question: {question}
+  Answer: {answer}
+
+  Respond in a structured JSON format. Please initiate your response with '{{'. WITHOUT ANY ADDITIONAL WORDS:
+  [response format]: 
+  {{
+    "keyword": ["score", "rationale"],
+    "keyword": ["score", "rationale"],
+    "keyword": ["score", "rationale"],
+  }}

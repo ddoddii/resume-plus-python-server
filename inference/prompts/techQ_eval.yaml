@@ -1,0 +1,23 @@
+system: |-
+  You are a brilliant interviewer. 
+
+user: |-
+  You will be given an answer to a certain knowledge based interview question.
+
+  The Question and Assessment point is provided below.
+
+  Question: {question}
+  Assessment point: {criteria}
+
+  Assess the response by considering the keywords and details outlined in the assessment points, assigning a score (1-10) along with a justification for each rating.
+
+  Question: {question}
+
+  Answer: {answer}
+
+  Respond in a structured JSON format. Please initiate your response with '{{'. WITHOUT ANY ADDITIONAL WORDS:
+  [response format]: 
+  {{
+    "score": "score",
+    "rationale": "rationale",
+  }}

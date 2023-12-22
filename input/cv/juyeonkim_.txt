@@ -1,0 +1,28 @@
+Juyeon (Joelle) Kim
+Yonsei University
+B.S. Candidate in Applied Statistics and Computer Science
+University of California, Los Angeles (UCLA)
+UCEAP Exchange Student, Computer Science <|endoftext|>
+RESEARCH INTEREST:  Large Multimodal Learning, LLMs with Graphs, Vision-Language Model, Knowledge Graph, Continual Learning, Retrieval-augmented Generation, Recommender System, Instruction Tuning. <|endoftext|>
+Linq (Techstars '23) Massachusetts, United States Research Intern (Advisor: Prof. Jy-yong Sohn) Sep.2023 – Present • Introduced a novel Fact-checking Framework for LLMs, leveraged question decomposition for query generation and seamlessly incorporating Google Search to harness external open-domain knowledge.
+• Achieved superior performance over SOTA models across diverse datasets while improving token efficiency.<|endoftext|>
+Data Mining Lab @ KAIST AI Seoul, Korea
+Undergraduate Research Intern (Advisor: Prof. Kijung Shin) Jul.2023 – Present • Researched and implemented Medication Combination Recommender System with LLMs, integrating EHR graph with generated explanation text to enhance medical representation and capture the progression of diagnoses. • Conducted research on Multi-modal Knowledge Graphs with focus on self-supervised representation learning.<|endoftext|>
+ Machine Learning Lab @ Yonsei Univ.
+Undergraduate Research Intern (Advisor: Prof. Kibok Lee)
+• Conducted the research on Unsupervised Continual Learning and Few-shot Learning.
+• Presented research proposals and reviewed papers at seminars, and actively participated in insightful discussions.<|endoftext|>
+LG H&H Seoul, Korea
+Data Scientist Intern Jul.2022 – Aug.2022 • Quantified brand image using text rank, sentiment analysis on crawled text data to propose a new business strategy. • Increased hierarchical clustering performance for a 750K product dataset by incorporating an embedding feature.<|endoftext|>
+MINDs n Company (AI Consulting Firm) Seoul, Korea
+DX Strategy Research Assistant May.2022 – Jun.2022 • Analyzed 6.5K recorded calls for an ICT device company using STT and keyword extraction using topic modeling. • Suggested a contact center CX excellence solution and streamlined the inquiry handling process.<|endoftext|>
+GDSC (Google Developer Student Clubs) @ Yonsei Univ. Seoul, Korea ML/AI Part Leader (Core Member) Aug.2023 – Present • Led tech seminars and actively contributed to the community, advocating for the practical application of AI/ML. • Participated in the Google Solution Challenge to implement a tech solution addressing a real-world challenge.<|endoftext|>
+YAI (Yonsei Association for Artificial Intelligence) Seoul, Korea
+Research Member, Industry-Academia Cooperation Officer Jul.2021 - Present • Participated in weekly paper sessions and discussions on topics including Multimodal Learning, GNN, and NLP. • Proactively engaged with AI companies, leading high-impact projects and delivering quality solutions
+Seoul, Korea <|endoftext|>
+Resume-Based Virtual Interview Bot Sep.2023 – Present • Utilized Language VAE to quantify the uniqueness of resume experiences, implementing a ranking system.
+• Developed bilingual interview bots in English and Korean using OpenAI API and HyperClova API, leveraging Flask for back-end and Flutter for front-end implementation.<|endoftext|>
+Few-shot Real-time Face Toonify App Oct.2022 - Nov.2022 • Improved the performance of JoJoGAN by applying restyle encoder for inversion and adding identity loss.
+• Demonstrated and deployed the app at the y-conference and won first place. github.com/Juyeonnn/YAIVERSE<|endoftext|>
+Financial Advisory Service Web Sep.2022 - Oct.2022 • Finetuned and used Fin-BERT and BERTopic for sentiment analysis and topic modeling to identify key trends. • Built web crawler that collects financial statements, news, analyst reports. github.com/Juyeonnn/Financial_Advisory_Service<|endoftext|>
+E2E OCR Model (Industry-Academia Cooperation Project with Lomin Inc.) Jan.2022 - Mar.2022 • Proposed a novel transformer-based model architecture that detects and recognizes in a single step, utilizing shared embedding features and improve d performance through four different weighted losses. . github.com/Juyeonnn/E2E_OCR<|endoftext|>

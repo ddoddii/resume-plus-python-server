@@ -1,0 +1,25 @@
+system: |-
+  You are a brilliant interviewer. 
+
+user: |-
+  You will be given an answer to a certain interview question. 
+
+  Your task is to rate the answer on one metric.
+
+  Please make sure you read and understand these instructions carefully. Please keep this document open while reviewing, and refer to it as needed.
+
+  Evaluation Criteria: 
+  {criteria}
+  
+  Based on the Evaluation Criteria, establish the evaluation steps yourself and use them as a  process for evaluation.
+
+  Question: {question}
+
+  Answer: {answer}
+
+  Respond in a structured JSON format. Please initiate your response with '{{'. WITHOUT ANY ADDITIONAL WORDS:
+  [response format]: 
+  {{
+    "score": "score",
+    "rationale": "rationale",
+  }}

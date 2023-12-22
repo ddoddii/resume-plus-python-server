@@ -1,0 +1,85 @@
+[
+    {
+        "question": "Can you describe a specific project where you leveraged multimodal learning techniques? What were the challenges you faced and how did you overcome them?",
+        "criteria": [
+            "Problem-solving: Ability to identify and address challenges in multimodal learning projects",
+            "Innovation: Creativity in applying multimodal learning techniques",
+            "Adaptability: Flexibility in adjusting to the unique demands of multimodal learning"
+        ],
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'Problem-solving': ['1', 'The answer does not provide any specific project or challenges faced, so it does not demonstrate problem-solving abilities in the context of multimodal learning projects.'],\n  'Innovation': ['1', 'The answer lacks any creativity or innovation in applying multimodal learning techniques.'],\n  'Adaptability': ['1', 'The answer does not show any flexibility in adjusting to the unique demands of multimodal learning.']\n}",
+        "type": "perQ"
+    },
+    {
+        "question": "In your role at Linq, you introduced a novel Fact-checking Framework for LLMs. Can you explain the process of developing this framework and how it improved upon existing models?",
+        "criteria": [
+            "Technical expertise: Understanding of fact-checking frameworks and LLMs",
+            "Impact: Ability to improve upon existing models",
+            "Problem-solving: Addressing challenges in fact-checking and LLMs"
+        ],
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'Technical expertise: Understanding of fact-checking frameworks and LLMs': ['1', 'The answer does not demonstrate any understanding of fact-checking frameworks or LLMs.'],\n  'Impact: Ability to improve upon existing models': ['1', 'The answer does not provide any explanation of how the framework improved upon existing models.'],\n  'Problem-solving: Addressing challenges in fact-checking and LLMs': ['1', 'The answer does not address any challenges or demonstrate problem-solving abilities in the context of fact-checking and LLMs.']\n}",
+        "type": "perQ"
+    },
+    {
+        "question": "You researched and implemented a Medication Combination Recommender System with LLMs at the Data Mining Lab. How did you integrate EHR graph with generated explanation text to enhance medical representation? Can you discuss the impact of this system in the medical field?",
+        "criteria": [
+            "Technical expertise: Understanding of medication recommendation systems and LLMs",
+            "Impact: Demonstrating the impact of the recommender system in the medical field",
+            "Problem-solving: Addressing challenges in integrating EHR graph with explanation text"
+        ],
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'Technical expertise: Understanding of medication recommendation systems and LLMs': ['1', 'The answer does not demonstrate understanding or knowledge of the technical aspects of medication recommendation systems and LLMs.'],\n  'Impact: Demonstrating the impact of the recommender system in the medical field': ['1', 'The answer does not discuss the impact of the system in the medical field.'],\n  'Problem-solving: Addressing challenges in integrating EHR graph with explanation text': ['1', 'The answer does not address the challenges or provide any insight into the integration of EHR graph with explanation text.']\n}",
+        "type": "perQ"
+    },
+    {
+        "question": "At LG H&H, you quantified brand image using text rank and sentiment analysis. Can you provide an example of how this analysis influenced a business strategy? How did you ensure the accuracy and reliability of your analysis?",
+        "criteria": [
+            "Analytical skills: Ability to derive insights from text analysis",
+            "Business acumen: Understanding the impact of analysis on business strategy",
+            "Attention to detail: Ensuring accuracy and reliability of analysis"
+        ],
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'Analytical skills: Ability to derive insights from text analysis': ['1', 'The answer does not demonstrate any ability to derive insights from text analysis.'],\n  'Business acumen: Understanding the impact of analysis on business strategy': ['1', 'The answer does not provide an example of how the analysis influenced a business strategy.'],\n  'Attention to detail: Ensuring accuracy and reliability of analysis': ['1', 'The answer does not address how accuracy and reliability of the analysis were ensured.']\n}",
+        "type": "perQ"
+    },
+    {
+        "question": "As a ML/AI Part Leader at GDSC, you led tech seminars and contributed to the community. Can you discuss a specific seminar or project where you advocated for the practical application of AI/ML? How did you ensure the relevance and applicability of the content to real-world challenges?",
+        "criteria": [
+            "Leadership: Ability to lead tech seminars and projects",
+            "Communication: Effectively advocating for practical application of AI/ML",
+            "Relevance: Ensuring the content is relevant and applicable to real-world challenges"
+        ],
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'Leadership': ['1', 'The answer does not provide any evidence of leadership in leading tech seminars or projects.'],\n  'Communication': ['1', 'The answer lacks effective communication and advocacy for the practical application of AI/ML.'],\n  'Relevance': ['1', 'The answer does not address how the content was made relevant and applicable to real-world challenges.']\n}",
+        "type": "perQ"
+    },
+    {
+        "question": "How to check if the regression model fits the data well?",
+        "example_answer": "There are a couple of metrics that you can use:\nR-squared/Adjusted R-squared: Relative measure of fit. This was explained in a previous answer\nF1 Score: Evaluates the null hypothesis that all regression coefficients are equal to zero vs the alternative hypothesis that at least one doesn\u2019t equal zero\nRMSE: Absolute measure of fit.",
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'score': '2',\n  'rationale': 'The response does not address the assessment point at all and lacks any relevant keywords or details related to the metrics for evaluating the fit of a regression model.'\n}",
+        "type": "techQ"
+    },
+    {
+        "question": "What Is Dropout and Batch Normalization?",
+        "example_answer": "Dropout is a technique of dropping out hidden and visible units of a network randomly to prevent overfitting of data (typically dropping 20 per cent of the nodes). It doubles the number of iterations needed to converge the network.\n\nBatch normalization is the technique to improve the performance and stability of neural networks by normalizing the inputs in every layer so that they have mean output activation of zero and standard deviation of one.",
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'score': '1',\n  'rationale': 'The response does not address the question or provide any information about dropout or batch normalization.'\n}",
+        "type": "techQ"
+    },
+    {
+        "question": "Tell me about a time in the last week when you\u2019ve been satisfied, energized, and productive at work. What were you doing?",
+        "criteria": "culture add",
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'score': '1',\n  'rationale': 'The answer does not provide any specific example or details, and it does not demonstrate any culture add.' \n}",
+        "type": "behavQ"
+    },
+    {
+        "question": "Recall a time when your manager was unavailable when a problem arose. How did you handle the situation? Who did you consult with?",
+        "criteria": "growth potential",
+        "answer": "maybe or maybe not",
+        "evaluation": "{\n  'score': '1',\n  'rationale': 'The answer provided does not demonstrate any growth potential as it lacks substance and does not address the question. It does not provide any insight into the candidate's ability to handle a challenging situation or seek guidance when necessary.'\n}",
+        "type": "behavQ"
+    }
+]
