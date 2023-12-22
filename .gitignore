@@ -323,3 +323,4 @@ pyrightconfig.json
 *.env
 app.log
 .idea
+*.pem
