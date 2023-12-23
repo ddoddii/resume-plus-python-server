@@ -1,22 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
-from typing import Annotated
-from jose import jwt, JWTError
-import starlette.status as status
-from passlib.context import CryptContext
 from datetime import timedelta, datetime
+from typing import Annotated
+
+import starlette.status as status
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from jose import jwt, JWTError
+from passlib.context import CryptContext
+from pydantic import BaseModel
+
+from config import config
 from database.models import Users
 from database.setup import db_dependency
-
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl="auth/token")
-
-
-SECRET_KEY = "e67cb6e960b18ce8ec8f683d28997ff83bada88df9321e52079f712c4e4c850e"
-ALGORITHM = "HS256"
 
 
 class CreateUserRequest(BaseModel):
@@ -98,12 +96,12 @@ def create_access_token(username: str, user_id: int, expires_data: timedelta):
     encode = {"sub": username, "id": user_id}
     expire = datetime.utcnow() + expires_data
     encode.update({"exp": expire})
-    return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
+    return jwt.encode(encode, config.SECRET_KEY, algorithm=config.ALGORITHM)
 
 
 def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]) -> dict:
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, config.SECRET_KEY, algorithms=[config.ALGORITHM])
         username: str = payload.get("sub")
         user_id: int = payload.get("id")
         if username is None or user_id is None:

@@ -21,9 +21,8 @@ class OpenAIChat:
         messages=[],
     ):
         if "gpt" not in model_name:
-            openai.api_base = "http://localhost:8000/v1"
+            openai.api_base = os.getenv("openai_api_base")
         else:
-            # openai.api_base = "https://api.openai.com/v1"
             openai.api_key = config.OPENAI_API_KEY
             assert (
                 openai.api_key is not None
