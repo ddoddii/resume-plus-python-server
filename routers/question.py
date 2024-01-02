@@ -36,6 +36,11 @@ logging.basicConfig(
 )
 
 
+@router.get("/test")
+def test():
+    return {"message": "test"}
+
+
 # GET Common Questions
 @router.get("/common_question")
 def get_common_questions(db: db_dependency, user: user_dependency) -> dict:
