@@ -38,6 +38,7 @@ class OpenAIChat:
             "top_p": top_p,
             "request_timeout": request_timeout,
             "messages": messages,
+            "stream": True,
         }
 
     def extract_list_from_string(self, input_string):

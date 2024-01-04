@@ -8,6 +8,7 @@ import starlette.status as status
 import yaml
 from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException, Depends
+import time
 
 from config import config
 from database.models import (
@@ -78,16 +79,18 @@ def get_personal_question(db: db_dependency, user: user_dependency):
     # raise (HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="User session limit reached"))
 
     # add user session count + 1
+    start = time.time()
     add_session_count(db, user)
     perQs = generate_personal_question(db, user)
-    print("perQs:", perQs)
+    # print("perQs:", perQs)
     personal_questions = get_asked_personal_questions(db, user)
 
     formatted_personal_questions = [
         {"id": q.id, "question": q.question, "criteria": q.criteria}
         for q in personal_questions
     ]
-
+    end = time.time()
+    print(f"{end - start} seconds")
     return {"personal_questions": formatted_personal_questions}
 
 
