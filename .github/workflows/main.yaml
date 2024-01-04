@@ -48,4 +48,5 @@ jobs:
   
             sudo docker run -p ${{ secrets.PORT }}:${{ secrets.PORT }} \
             --name ${{ secrets.PROJECT_NAME }} \
+            -v /home/ubuntu/resume_ai_chat.db:/app/resume_ai_chat.db
             -d ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
