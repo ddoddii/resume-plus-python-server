@@ -47,7 +47,8 @@ jobs:
             sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }} 
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
   
-            sudo docker run -p ${{ secrets.PORT }}:${{ secrets.PORT }} \
+            sudo docker run -p  ${{ secrets.PORT }}:${{ secrets.PORT }} \
+            --env-file ${{ secrets.ENV }} \
             --name ${{ secrets.PROJECT_NAME }} \
             -v /home/ubuntu/resume_ai_chat.db:/app/resume_ai_chat.db \
             -d ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
