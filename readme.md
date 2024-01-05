@@ -278,3 +278,4 @@ main 브랜치에 푸쉬를 하면, github action 이 트리거 되어서 아래
 - 한글 버전 만들기 
 - 산학 컨택 
 - OpenAI API 에만 의존하지 않도록 다른 API 찾기 + OpenAI API 모니터링 
+- Testcode 작성
