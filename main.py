@@ -6,20 +6,17 @@ from database.setup import engine
 from routers import question, answer, auth, user
 
 
-app = FastAPI(
-    title = 'GDSC Resume AI Chat',
-    version = 'v1'
-)
+app = FastAPI(title="GDSC Resume AI Chat", version="v1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://192.168.35.192:3000"],
+    allow_origins=["http://172.24.96.1:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-models.Base.metadata.create_all(bind = engine)
+models.Base.metadata.create_all(bind=engine)
 
 
 app.include_router(question.router)
