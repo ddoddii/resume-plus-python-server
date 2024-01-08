@@ -10,7 +10,7 @@ app = FastAPI(title="GDSC Resume AI Chat", version="v1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://172.24.96.1:3000"],
+    allow_origins=["http://172.24.101.131:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
