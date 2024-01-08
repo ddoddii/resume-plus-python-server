@@ -1,5 +1,8 @@
 # Chat Your Interview 회고
 
+- [@ddoddii](https://github.com/ddoddii) 의 회고 : [Chat Your Interview](https://ddoddii.github.io/post/project/chatyourinterview/about/)
+- [@inshining](https://github.com/inshining) 의 회고 : [도커를 곁들인 프로젝트 리팩토링하기](https://inshining.github.io/posts/2024-01-4-refactoring-with-docekr/)
+
 [GDSC](https://gdsc-ys.github.io/) ML 파트원, 프런트 [@수빈](https://github.com/suekim3028), 백엔드 [@인엽](https://github.com/inshining) 함께 CV 기반 개인 질문을 생성해주고, 챗봇 형태로 대화할 수 있는 `Chat Your Interview` 프로젝트를 진행했다. 
 
 프로젝트를 통해 Github-actions, docker, AWS EC2 를 찐하게 다루어볼 수 있었다. 우선 이 포스팅에서는 어떤 기술을 선택했는지, DB 스키마 설계, API 설계에 대해 다루어보고자 한다. 
@@ -127,7 +130,7 @@ def create_access_token(username: str, user_id: int, expires_data: timedelta):
 
 openAI API 를 호출할 때도 비동기 방식을 적용했다. 비동기 방식이 많이 나오는데, python 에서 Async 를 사용한 방법은 아래 글에 자세하게 정리해보았다. 
 
-{{< article link="/post/cs/python/python-asyncio/" >}}
+[python 에서 비동기 사용하기](https://ddoddii.github.io/post/cs/python/python-asyncio/)
 
 
 한 번 CV 기반 개인 질문을 생성할 때 5개 생성하도록 했다. 이때 API 호출 속도를 테스트 하기 위해 로컬 환경에서 실험해보았다. 외부 API 를 호출하는 거라 호출할 때마다 차이가 났다. 최단 시간은 23초, 오래 걸릴 때는 44초 등 차이가 많이 났다. 
