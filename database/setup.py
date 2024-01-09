@@ -13,7 +13,10 @@ load_dotenv()
 SQLALCEMY_DATABASE_URL = "sqlite:///./resume_ai_chat.db"
 
 engine = create_engine(
-    SQLALCEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCEMY_DATABASE_URL,
+    connect_args={"check_same_thread": False},
+    pool_size=20,
+    max_overflow=20,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
