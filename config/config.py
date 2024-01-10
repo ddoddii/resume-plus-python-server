@@ -10,3 +10,4 @@ FOUNDATION_MODEL = "gpt-3.5-turbo-1106"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS")

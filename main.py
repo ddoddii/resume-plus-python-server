@@ -4,13 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 import database.models as models
 from database.setup import engine
 from routers import question, answer, auth, user
+from config import config
 
+print(config.CORS_ORIGINS)
 
 app = FastAPI(title="GDSC Resume AI Chat", version="v1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://172.24.101.131:3000"],
+    allow_origins=config.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
