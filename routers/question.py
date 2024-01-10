@@ -9,6 +9,7 @@ import yaml
 from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException, Depends
 import time
+from sqlalchemy import desc
 
 from config import config
 from database.models import (
@@ -95,8 +96,18 @@ def get_personal_question(db: db_dependency, user: user_dependency):
 
 
 def generate_personal_question(db, user):
-    cv_content = db.query(CV.content).filter(CV.user_id == user.get("id")).first()[0]
-    cv_position = db.query(CV.position).filter(CV.user_id == user.get("id")).first()[0]
+    cv_content = (
+        db.query(CV.content)
+        .filter(CV.user_id == user.get("id"))
+        .order_by(desc(CV.upload_time))
+        .first()[0]
+    )
+    cv_position = (
+        db.query(CV.position)
+        .filter(CV.user_id == user.get("id"))
+        .order_by(desc(CV.upload_time))
+        .first()[0]
+    )
     foundation_model = config.FOUNDATION_MODEL
 
     chat_model = Chat(
