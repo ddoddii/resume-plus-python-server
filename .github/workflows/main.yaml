@@ -22,6 +22,21 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       -
+        name : Cache pip modules
+        id : cache-pip
+        uses : actions/cache@v3
+        with :
+          path : ~/.cache/pip
+          key : ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+      -
+        name: Install dependencies
+        if: steps.cache-pip.outputs.cache-hit != 'true'
+        run: pip install -r requirements.txt
+
+      -
         name : Cache Docker layers
         id : cache
         uses : actions/cache@v3
