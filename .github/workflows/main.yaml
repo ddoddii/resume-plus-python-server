@@ -55,16 +55,14 @@ jobs:
       -
         # Build and push to dockerhub
         name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
-          cache-froms: |
-            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
-            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:master
-            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:1.0.0
+          cache-from: type=gha # 여기서 gha 는 GitHub Actions 용 캐시를 의미
+          cache-to: type=gha,mode=max
 
       # EC2 인스턴스 접속 및 애플리케이션 실행
       -
