@@ -61,6 +61,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
+          cache-froms: |
+            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
+            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:master
+            type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:1.0.0
 
       # EC2 인스턴스 접속 및 애플리케이션 실행
       -
