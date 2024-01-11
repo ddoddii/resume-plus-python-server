@@ -71,9 +71,9 @@ jobs:
       # 새로운 이미지 기반으로 컨테이너 실행
           script: |
             
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker stop
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker kill 
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker rm -f
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.ID}} | xargs  -r sudo docker stop
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.ID}} | xargs -r sudo docker kill 
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.ID}} | xargs -r sudo docker rm -f
           
             sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}            
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}  
