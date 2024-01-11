@@ -61,8 +61,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
-          cache-from: type=gha # 여기서 gha 는 GitHub Actions 용 캐시를 의미
-          cache-to: type=gha,mode=max
+
+      - name: Save state
+        run: echo "{name}={value}" >> $GITHUB_STATE
+
+      - name: Set output
+        run: echo "{name}={value}" >> $GITHUB_OUTPUT
 
       # EC2 인스턴스 접속 및 애플리케이션 실행
       -
