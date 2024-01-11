@@ -48,12 +48,15 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
-
+      # 기존 컨테이너 중지, 이미지 삭제
+      # 새로운 이미지 받아오기
+      # 새로운 이미지 기반으로 컨테이너 실행
           script: |
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker stop
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker kill 
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r sudo docker rm -f
-            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }} 
+            
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.Names}}" | xargs -r -I {} docker stop {}
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.Names}}" | xargs -r -I {} docker rm -f {}
+            sudo docker images -q ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }} | xargs -r docker rmi
+
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
   
             sudo docker run -p  ${{ secrets.PORT }}:${{ secrets.PORT }} \
