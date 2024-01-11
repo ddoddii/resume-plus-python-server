@@ -39,6 +39,10 @@ jobs:
         if: steps.cache-pip.outputs.cache-hit != 'true'
         run: pip install -r requirements.txt
 
+      - name: Check Cache Directory
+        run: |
+          mkdir -p /tmp/.buildx-cache
+          ls -la /tmp
       -
         name : Cache Docker layers
         id : cache
