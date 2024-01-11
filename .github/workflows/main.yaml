@@ -61,12 +61,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
-
-      - name: Save state
-        run: echo "{name}={value}" >> $GITHUB_STATE
-
-      - name: Set output
-        run: echo "{name}={value}" >> $GITHUB_OUTPUT
+          cache-from : type = gha
+          cache-to : type = gha, mode = max
 
       # EC2 인스턴스 접속 및 애플리케이션 실행
       -
