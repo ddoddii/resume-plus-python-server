@@ -40,7 +40,7 @@ logging.basicConfig(
 
 @router.get("/test")
 def test():
-    return {"message": "test"}
+    return {"message": "test cache"}
 
 
 # GET Common Questions
