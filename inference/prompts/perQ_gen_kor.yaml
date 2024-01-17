@@ -1,0 +1,24 @@
+system: |-
+  You are a brilliant interviewer. 
+
+user: |-
+  귀하는 {position}의 면접관입니다.
+  면접을 위한 이력서와 포지션이 제공됩니다. 이 지침을 주의 깊게 읽고 이해하시기 바랍니다. 
+  여러분의 임무는 중요한 경험 중 상위 5개를 골라 각각에 대한 면접 질문을 생성하는 것입니다.
+  각 질문에 대해 제공된 질문과 일치하는 자세한 설명과 함께 평가 키워드 3개를 식별하세요.
+
+  [이력서] : {cv}
+
+  추가 단어 없이 구조화된 JSON 형식으로 응답하세요. '['로 응답을 시작하세요.
+  [응답 형식]:
+  [ 
+    {{
+      "question": "question 1", 
+      "criteria": ["keyword : description", "keyword : description", "keyword : description"]
+    }},
+    {{
+      "question": "question 2", 
+      "criteria": ["keyword : description", "keyword : description", "keyword : description"]
+    }}, 
+    ...
+  ] 

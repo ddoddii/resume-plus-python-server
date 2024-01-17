@@ -2,12 +2,12 @@ from chat import Chat
 import ast
 import json
 import pandas as pd
-
-
-if __name__ == "__main__":
+import asyncio
+ 
+async def main():
     # position = [ 'ai','be','fe','mobile' ]
     foundation_model, cv_path, position = (
-        "gpt-3.5-turbo-1106",
+        "gemini-pro",
         "./input/cv/juyeonkim.txt",
         "ai",
     )
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     total_token = 0
 
     """ perQ Generation """
-    perQ_results, token = chat_model.question_generation()
+    perQ_results, token = await chat_model.question_generation()
     total_token += token
 
     """ perQ Answer Evaluation """
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         print(f'### PerQ {i+1} : {perQ["question"]}')
         # answer = input(f'Answer {i+1} : ')
         answer = "Answer Goes Here"
-        eval_results, token = chat_model.answer_evaluation(
+        eval_results, token = await chat_model.answer_evaluation(
             type="perQ",
             question=perQ["question"],
             criteria=perQ["criteria"],
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         print(f'### behavQ {i+1} : {behavQ_results[i]["question"]}')
         # answe = input(f'Answer {i+1} : ')
         answer = "I DON'T KNOW"
-        eval_results, token = chat_model.answer_evaluation(
+        eval_results, token = await chat_model.answer_evaluation(
             type="behavQ",
             question=behavQ["question"],
             criteria=behavQ["criteria"],
@@ -65,12 +65,16 @@ if __name__ == "__main__":
         total_token += token
 
     # save in jsonl format
-    with open("./output/temp_output.json", "w", encoding="utf-8") as f:
+    with open("./output/temp_output_kor.jsonl", "w", encoding="utf-8") as f:
         for perQ_result in perQ_results:
-            json.dump(perQ_result, f)
+            json.dump(perQ_result, f, ensure_ascii = False)
             f.write("\n")
         for behavQ_result in behavQ_results:
-            json.dump(behavQ_result, f)
+            json.dump(behavQ_result, f, ensure_ascii = False)
             f.write("\n")
 
     print(f"Spent $ {round(total_token*0.0030/1000,5)}")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+   

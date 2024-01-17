@@ -1,7 +1,5 @@
 # the async version is adapted from https://gist.github.com/neubig/80de662fb3e225c18172ec218be4917a
 
-from __future__ import annotations
-
 import ast
 import asyncio
 import os
