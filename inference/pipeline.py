@@ -2,7 +2,7 @@ import yaml
 import os
 import pathlib
 # from .openai_wrapper import OpenAIChat
-from gemini_wrapper import GeminiChat
+from .gemini_wrapper import GeminiChat
 
 class pipelines:
     def __init__(self, foundation_model):

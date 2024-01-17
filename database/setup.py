@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-SQLALCEMY_DATABASE_URL = "sqlite:///./resume_ai_chat.db"
+SQLALCEMY_DATABASE_URL="sqlite:///./resume_ai_chat.db"
 
 engine = create_engine(
     SQLALCEMY_DATABASE_URL, connect_args={"check_same_thread": False}

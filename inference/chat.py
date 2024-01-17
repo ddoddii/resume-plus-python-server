@@ -1,6 +1,6 @@
 import asyncio
-from pipeline import pipelines
-from utils import preprocess
+from .pipeline import pipelines
+from .utils import preprocess
 
 
 class Chat:

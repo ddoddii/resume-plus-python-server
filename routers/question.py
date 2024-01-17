@@ -73,7 +73,7 @@ def get_common_questions(db: db_dependency, user: user_dependency) -> dict:
 
 # GET Personal Question
 @router.get("/personal_question")
-def get_personal_question(db: db_dependency, user: user_dependency):
+async def get_personal_question(db: db_dependency, user: user_dependency):
     # Check user session limit
     # if not user_session_available(db, user):
     # raise (HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="User session limit reached"))
@@ -81,7 +81,7 @@ def get_personal_question(db: db_dependency, user: user_dependency):
     # add user session count + 1
     start = time.time()
     add_session_count(db, user)
-    perQs = generate_personal_question(db, user)
+    perQs = await generate_personal_question(db, user)
     # print("perQs:", perQs)
     personal_questions = get_asked_personal_questions(db, user)
 
@@ -94,7 +94,7 @@ def get_personal_question(db: db_dependency, user: user_dependency):
     return {"personal_questions": formatted_personal_questions}
 
 
-def generate_personal_question(db, user):
+async def generate_personal_question(db, user):
     cv_content = db.query(CV.content).filter(CV.user_id == user.get("id")).first()[0]
     cv_position = db.query(CV.position).filter(CV.user_id == user.get("id")).first()[0]
     foundation_model = config.FOUNDATION_MODEL
@@ -103,7 +103,7 @@ def generate_personal_question(db, user):
         foundation_model=foundation_model, content=cv_content, position=cv_position
     )
 
-    perQ_results, _ = chat_model.question_generation()
+    perQ_results, _ = await chat_model.question_generation()
     print("perQ_results:", perQ_results)
     logging.info("Generating Question with api")
     logging.info(perQ_results)
@@ -130,10 +130,17 @@ def get_tech_question_from_db(
     user_position = (
         db.query(CV.position).filter(CV.user_id == user.get("id")).first()[0]
     )
+    
     all_question_ids = (
         db.query(Tech_Question.id).filter(Tech_Question.position == user_position).all()
     )
-    ids = random.sample([qid[0] for qid in all_question_ids], k=question_num)
+    try:
+        ids = random.sample([qid[0] for qid in all_question_ids], k=question_num)
+    except ValueError:
+        print(user_position)
+        print(all_question_ids)
+        print("Not enough questions in database")
+        raise ValueError
     query = db.query(Tech_Question).filter(Tech_Question.id.in_(ids)).all()
 
     return ids, query

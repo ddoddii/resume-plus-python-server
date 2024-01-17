@@ -11,4 +11,5 @@ PyYAML==6.0.1
 SQLAlchemy==2.0.23
 starlette
 uvicorn
+bcrypt
 python-multipart

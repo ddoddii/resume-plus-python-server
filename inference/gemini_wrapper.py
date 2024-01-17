@@ -5,7 +5,7 @@ import yaml
 import google.generativeai as genai
 import google.ai.generativelanguage as glm
 
-import config
+from config import config
 
 class GeminiChat:
     def __init__(

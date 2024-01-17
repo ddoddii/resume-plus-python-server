@@ -8,8 +8,9 @@ load_dotenv()
 
 # CSV PATH and TABLE NAME
 # ========================= #
-CSV_PATH = "./input/question/behav_q.csv"
-TABLE_NAME = "behavior_question"
+# CSV_PATH = "./input/question/behav_q.csv"
+CSV_PATH = "./input/question/tech_q_kor.csv"
+TABLE_NAME = "tech_question"
 # ========================= #
 
 SQLALCEMY_DATABASE_URL = os.getenv("SQLALCEMY_DATABASE_URL")
@@ -23,7 +24,7 @@ def insert_data(db, table, rows):
     for row in rows:
         db.execute(
             text(
-                f"INSERT INTO {table} (question, criteria ) VALUES (:question, :criteria)"
+                f"INSERT INTO {table} (question, position, topic, example_answer) VALUES (:question, :position, :topic, :example_answer)"
             ),
             row,
         )

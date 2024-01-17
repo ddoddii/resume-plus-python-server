@@ -48,21 +48,21 @@ async def main():
     for i in range(len(data)):
         behavQ_results.append(data.iloc[i][["question", "criteria"]].to_dict())
 
-    """ behavQ Answer Evaluation """
-    for i, behavQ in enumerate(behavQ_results):
-        print(f'### behavQ {i+1} : {behavQ_results[i]["question"]}')
-        # answe = input(f'Answer {i+1} : ')
-        answer = "I DON'T KNOW"
-        eval_results, token = await chat_model.answer_evaluation(
-            type="behavQ",
-            question=behavQ["question"],
-            criteria=behavQ["criteria"],
-            answer=answer,
-        )
-        behavQ_results[i].update(
-            {"answer": answer, "evaluation": eval_results, "type": "behavQ"}
-        )
-        total_token += token
+    # """ behavQ Answer Evaluation """
+    # for i, behavQ in enumerate(behavQ_results):
+    #     print(f'### behavQ {i+1} : {behavQ_results[i]["question"]}')
+    #     # answe = input(f'Answer {i+1} : ')
+    #     answer = "I DON'T KNOW"
+    #     eval_results, token = await chat_model.answer_evaluation(
+    #         type="behavQ",
+    #         question=behavQ["question"],
+    #         criteria=behavQ["criteria"],
+    #         answer=answer,
+    #     )
+    #     behavQ_results[i].update(
+    #         {"answer": answer, "evaluation": eval_results, "type": "behavQ"}
+    #     )
+    #     total_token += token
 
     # save in jsonl format
     with open("./output/temp_output_kor.jsonl", "w", encoding="utf-8") as f:
