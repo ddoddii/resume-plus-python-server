@@ -1,6 +1,9 @@
 name: ci
 
 on:
+  push:
+    branches:
+      - "main"
   pull_request:
     branches:
       - "main"
@@ -36,6 +39,10 @@ jobs:
         if: steps.cache-pip.outputs.cache-hit != 'true'
         run: pip install -r requirements.txt
 
+      - name: Check Cache Directory
+        run: |
+          mkdir -p /tmp/.buildx-cache
+          ls -la /tmp
       -
         name : Cache Docker layers
         id : cache
@@ -48,12 +55,14 @@ jobs:
       -
         # Build and push to dockerhub
         name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}:latest
+          cache-from : type=gha
+          cache-to : type=gha,mode=max
 
       # EC2 인스턴스 접속 및 애플리케이션 실행
       -
@@ -68,8 +77,9 @@ jobs:
       # 새로운 이미지 기반으로 컨테이너 실행
           script: |
             
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r docker stop            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r docker kill            
-            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" | xargs -r docker rm -f  
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.ID}}" | xargs  -r sudo docker stop 
+            sudo docker ps -a --filter "name=${{ secrets.PROJECT_NAME }}" --format "{{.ID}}" | xargs -r sudo docker rm -f
+          
             sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}            
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}  
               
