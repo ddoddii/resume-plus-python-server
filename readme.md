@@ -7,6 +7,7 @@
 
 프로젝트를 통해 Github-actions, docker, AWS EC2 를 찐하게 다루어볼 수 있었다. 우선 이 포스팅에서는 어떤 기술을 선택했는지, DB 스키마 설계, API 설계에 대해 다루어보고자 한다. 
 
+
 프로젝트 스택은 다음과 같다. 
 
 - Backend Framework : FastAPI
