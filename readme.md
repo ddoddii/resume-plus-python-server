@@ -19,17 +19,15 @@
         - 이때 기술 질문은 저희가 사전에 제작한 정답 기반, 개인 질문은 여러 criteria 기반으로 평가합니다.
     - 사용자는 각 질문 별로 평가 항목에 따라 점수와 채점 기준등을 제공 받습니다.
 
-- **데모 영상**
-
-https://github.com/ddoddii/resume-ai-chat/assets/95014836/d1add248-0a06-485f-9f4f-e2f8ed250203
-
-    
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cgK4MzohPjA/0.jpg)](https://www.youtube.com/watch?v=cgK4MzohPjA)
-
-- 팀원
+- **팀원**
   - BE : 엄소은
   - FE : 김수빈
   - ML : 임예원, 윤장한
+
+- **데모 영상**
+
+https://github.com/ddoddii/resume-ai-chat/assets/95014836/276beb6f-7f4a-4788-b29d-e28ca413a66a
+
 
 ## 🚗 User Flow
 
