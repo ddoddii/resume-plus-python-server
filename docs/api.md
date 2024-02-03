@@ -92,7 +92,7 @@
     "personal_questions": [
       {
         "idx": 5,
-        "question": "Can you provide an example of a project or research you have worked on related to large multimodal learning or vision-language models?",
+        "question": "Can you provide an example of a project or research you have worked on related to large multimodal learning or vision-language model?",
         "criteria": [
           "Relevance to research interest",
           "Project details and implementation",
