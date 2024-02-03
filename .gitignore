@@ -325,3 +325,4 @@ app.log
 .idea
 *.pem
 *.db
+model/
