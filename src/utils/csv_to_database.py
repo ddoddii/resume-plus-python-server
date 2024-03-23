@@ -8,7 +8,7 @@ load_dotenv()
 
 # CSV PATH and TABLE NAME
 # ========================= #
-CSV_PATH = "./input/question/behav_q.csv"
+CSV_PATH = "./input/questions/behav_q.csv"
 TABLE_NAME = "behavior_question"
 # ========================= #
 
@@ -23,7 +23,7 @@ def insert_data(db, table, rows):
     for row in rows:
         db.execute(
             text(
-                f"INSERT INTO {table} (question, criteria ) VALUES (:question, :criteria)"
+                f"INSERT INTO {table} (questions, criteria ) VALUES (:questions, :criteria)"
             ),
             row,
         )
