@@ -2,12 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 import starlette.status as status
 from datetime import timedelta
 from typing import Annotated
-
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 
 from src.auth.schemas import CreateUserRequest
-
 from src.auth import service
 from src.auth.schemas import Token, UserLoginRequest
 from src.database import get_db
