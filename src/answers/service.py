@@ -1,62 +1,26 @@
-import ast
 import json
-from enum import Enum
-from typing import Annotated, Dict
 from json.decoder import JSONDecodeError
+from fastapi import HTTPException
 import starlette.status as status
-import yaml
-from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel, Field
-
-from database.models import (
-    Interaction,
-    Tech_Question,
-    Behavior_Question,
-    Personal_Question,
-    Sessions,
-)
-from database.setup import db_dependency
-from .auth import get_current_user
-from .user import build_chat_model
-
-router = APIRouter(tags=["answers"])
-
-user_dependency = Annotated[dict, Depends(get_current_user)]
+from src.questions.service import Tech_Question, Behavior_Question, Personal_Question
+from src.users.service import build_chat_model
+from src.answers.schemas import SingleResponse, AskedQuestionsResponse, QuestionType
+from src.models import Sessions, Interaction
 
 
-class QuestionType(str, Enum):
-    tech = "techQ"
-    behav = "behavQ"
-    personal = "perQ"
-
-
-class SingleAnswer(BaseModel):
-    answer: str = Field(default="I DON'T KNOW")
-
-
-class SingleResponse(BaseModel):
-    type: QuestionType
-    question: str
-    user_answer: str
-    evaluation: Dict
-
-
-@router.get("/asked_question", status_code=status.HTTP_200_OK)
-def asked_question(db: db_dependency, user: user_dependency) -> dict:
+def get_asked_question(db, user) -> AskedQuestionsResponse:
     tech_question_ids = get_asked_tech_question(db, user)
     behav_question_ids = get_asked_behav_question(db, user)
     personal_question_ids = get_asked_personal_question(db, user)
-    return {
-        "techQ_ids": tech_question_ids,
-        "behavQ_ids": behav_question_ids,
-        "perQ_ids": personal_question_ids,
-    }
+
+    return AskedQuestionsResponse(
+        techQ_ids=tech_question_ids,
+        behavQ_ids=behav_question_ids,
+        perQ_ids=personal_question_ids,
+    )
 
 
-@router.post("/submit_tech_answer/{question_id}", status_code=status.HTTP_200_OK)
-def submit_tech_answer(
-    question_id: int, request: SingleAnswer, db: db_dependency, user: user_dependency
-) -> SingleResponse:
+def submit_tech_answer(question_id, request, db, user) -> SingleResponse:
     tech_question_ids = get_asked_tech_question(db, user)
     interaction_id = get_interaction_id(db, user)
 
@@ -67,9 +31,6 @@ def submit_tech_answer(
         )
 
     evaluation = evaluate_tech_answer(db, user, question_id, request.answer)
-
-    # store_gpt_feedback(db, request.answer ,question_id, interaction_id, evaluation)
-
     tech_response = make_response(
         db, question_id, request, Tech_Question, QuestionType.tech, evaluation
     )
@@ -78,10 +39,7 @@ def submit_tech_answer(
     return tech_response
 
 
-@router.post("/submit_behav_answer/{question_id}", status_code=status.HTTP_200_OK)
-def submit_behav_answer(
-    question_id: int, request: SingleAnswer, db: db_dependency, user: user_dependency
-) -> SingleResponse:
+def submit_behav_answer(question_id, request, db, user) -> SingleResponse:
     behav_question_ids = get_asked_behav_question(db, user)
     interaction_id = get_interaction_id(db, user)
 
@@ -105,11 +63,7 @@ def submit_behav_answer(
     return behav_response
 
 
-@router.post("/submit_personal_answer/{question_id}", status_code=status.HTTP_200_OK)
-def submit_personal_answer(
-    question_id: int, request: SingleAnswer, db: db_dependency, user: user_dependency
-) -> SingleResponse:
-
+def submit_personal_answer(question_id, request, db, user) -> SingleResponse:
     evaluation = evaluate_personal_answer(
         db, user, question_id, request.answer
     )  # make with gpt
@@ -125,7 +79,11 @@ def submit_personal_answer(
     return personal_response
 
 
-# Evaluate Tech answer
+"""
+Evaluate Tech Answers
+"""
+
+
 def evaluate_tech_answer(db, user, question_id, tech_answer):
     chat_model = build_chat_model(db, user)
     type = "techQ"
@@ -144,7 +102,11 @@ def evaluate_tech_answer(db, user, question_id, tech_answer):
     return json_convert(response)
 
 
-# Evaluate Behav answer
+"""
+Evaluate Behav answers
+"""
+
+
 def evaluate_behav_answer(db, user, question_id, behav_answer):
     chat_model = build_chat_model(db, user)
     type = "behavQ"
@@ -166,7 +128,7 @@ def evaluate_behav_answer(db, user, question_id, behav_answer):
     return json_convert(response)
 
 
-# Evaluate Personal answer
+# Evaluate Personal answers
 def evaluate_personal_answer(db, user, question_id, personal_answer):
     chat_model = build_chat_model(db, user)
     type = "perQ"
@@ -226,7 +188,7 @@ def store_user_answer(db, interaction_id, question_id, user_answer) -> None:
     db.commit()
 
 
-# Store Qid, User answer, GPT Feedback
+# Store Qid, User answers, GPT Feedback
 def store_gpt_feedback(db, user_answer, question_id, interaction_id, feedback) -> None:
     session_record = (
         db.query(Sessions).filter(Sessions.interaction_id == interaction_id).first()
@@ -238,7 +200,7 @@ def store_gpt_feedback(db, user_answer, question_id, interaction_id, feedback) -
         json.loads(session_record.feedback) if session_record.feedback else []
     )
     current_feedback.append(
-        {"Qid": question_id, "user answer": user_answer, "feedback": feedback}
+        {"Qid": question_id, "users answers": user_answer, "feedback": feedback}
     )
     session_record.feedback = json.dumps(current_feedback)
 
