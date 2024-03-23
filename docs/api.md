@@ -103,7 +103,7 @@
       },
       {
         "idx": 6,
-        "question": "How did you leverage question decomposition for query generation and seamlessly incorporate external open-domain knowledge in the fact-checking framework for LLMs during your research internship at Linq?",
+        "question": "How did you leverage questions decomposition for query generation and seamlessly incorporate external open-domain knowledge in the fact-checking framework for LLMs during your research internship at Linq?",
         "criteria": [
           "Problem-solving approach",
           "Innovation and creativity",
@@ -218,27 +218,27 @@
         {
           "criteria": "Accuracy",
           "score": "1",
-          "rationale": "The answer does not provide any accurate information about context switching."
+          "rationale": "The answers does not provide any accurate information about context switching."
         },
         {
           "criteria": "Clarity",
           "score": "1",
-          "rationale": "The answer lacks clarity and does not effectively communicate any understanding of the concept."
+          "rationale": "The answers lacks clarity and does not effectively communicate any understanding of the concept."
         },
         {
           "criteria": "Relevance",
           "score": "1",
-          "rationale": "The answer is not relevant to the question and does not address the topic of context switching."
+          "rationale": "The answers is not relevant to the questions and does not address the topic of context switching."
         },
         {
           "criteria": "Depth",
           "score": "1",
-          "rationale": "The answer lacks depth and does not demonstrate any understanding or knowledge of context switching."
+          "rationale": "The answers lacks depth and does not demonstrate any understanding or knowledge of context switching."
         },
         {
           "criteria": "Coherence",
           "score": "1",
-          "rationale": "The answer is not coherent and does not present any logical or organized thoughts on the topic."
+          "rationale": "The answers is not coherent and does not present any logical or organized thoughts on the topic."
         }
       ]
     }
@@ -260,7 +260,7 @@
     "user_answer": "I DON'T KNOW",
     "evaluation": {
       "score": 1,
-      "rationale": "The answer does not demonstrate any collaboration as it lacks specific details or examples of working with a partner or supervisor. It does not provide any insight into the management style that appealed to the candidate."
+      "rationale": "The answers does not demonstrate any collaboration as it lacks specific details or examples of working with a partner or supervisor. It does not provide any insight into the management style that appealed to the candidate."
     }
   }
   ```
@@ -279,7 +279,7 @@
     "user_answer": "I DON'T KNOW",
     "evaluation": {
       "score": 1,
-      "rationale": "The answer does not demonstrate any collaboration as it lacks specific details or examples of working with a partner or supervisor. It does not provide any insight into the management style that appealed to the candidate."
+      "rationale": "The answers does not demonstrate any collaboration as it lacks specific details or examples of working with a partner or supervisor. It does not provide any insight into the management style that appealed to the candidate."
     }
   }
   ```
