@@ -1,12 +1,11 @@
 from fastapi.testclient import TestClient
 
-from main import app
+from src.main import app
 
 client = TestClient(app)
 
 
 def test_read_main():
-    response = client.get("/test")
+    response = client.get("/tests")
     assert response.status_code == 200
-    assert response.json() == {"message": "test"}
-
+    assert response.json() == {"message": "tests"}
