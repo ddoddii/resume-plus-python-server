@@ -5,19 +5,19 @@ from __future__ import annotations
 import ast
 import asyncio
 import os
-import yaml
 import openai
-from config import config
+from src.configs import config
 
 
 class OpenAIChat:
     def __init__(
         self,
-        model_name="gpt-3.5-turbo",
+        model_name="gpt-3.5-turbo-1106",
         max_tokens=2500,
         temperature=0,
         top_p=1,
         request_timeout=120,
+        response_format={"type": "json_object"},
         messages=[],
     ):
         if "gpt" not in model_name:
@@ -39,6 +39,7 @@ class OpenAIChat:
             "request_timeout": request_timeout,
             "messages": messages,
             "stream": True,
+            "response_format": response_format,
         }
 
     def extract_list_from_string(self, input_string):
@@ -106,6 +107,7 @@ class OpenAIChat:
                         temperature=self.config["temperature"],
                         top_p=self.config["top_p"],
                         request_timeout=self.config["request_timeout"],
+                        response_format=self.config["response_format"],
                     )
                     return response
                 except openai.error.RateLimitError:
@@ -180,4 +182,4 @@ class OpenAIEmbed:
 
 
 if __name__ == "__main__":
-    chat = OpenAIChat(model_name="llama-2-7b-chat-hf")
+    chat = OpenAIChat(model_name="gpt-3.5-turbo-0125")

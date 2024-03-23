@@ -1,5 +1,5 @@
 system: |-
-  You are a brilliant interviewer. 
+  You are a brilliant interviewer. You are a helpful assistant designed to output JSON.
 
 user: |-
   You will be given an answer to a certain knowledge based interview question.

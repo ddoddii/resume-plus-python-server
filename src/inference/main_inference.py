@@ -26,41 +26,41 @@ if __name__ == "__main__":
     """ perQ Answer Evaluation """
     perQ_results = ast.literal_eval(perQ_results)
     for i, perQ in enumerate(perQ_results):
-        print(f'### PerQ {i+1} : {perQ["question"]}')
-        # answer = input(f'Answer {i+1} : ')
+        print(f'### PerQ {i+1} : {perQ["questions"]}')
+        # answers = input(f'Answer {i+1} : ')
         answer = "Answer Goes Here"
         eval_results, token = chat_model.answer_evaluation(
             type="perQ",
-            question=perQ["question"],
+            question=perQ["questions"],
             criteria=perQ["criteria"],
             answer=answer,
-        )  # 여기에서는, behavior_category ={} 를 criteria로 활용 answer =answer)
+        )  # 여기에서는, behavior_category ={} 를 criteria로 활용 answers =answers)
         perQ_results[i].update(
-            {"answer": answer, "evaluation": eval_results, "type": "perQ"}
+            {"answers": answer, "evaluation": eval_results, "type": "perQ"}
         )
         total_token += token
 
     """ behavQ & techQ retrieval """
-    data = pd.read_csv("./input/question/behav_q.csv")
+    data = pd.read_csv("./input/questions/behav_q.csv")
     # data = data[data['type'] == 'behavQ'].sample(2,replace=False)
     # data['criteria'] = data['behavior_category'] # 여기에서는, behavior_category ={} 를 criteria로 활용
     behavQ_results = []
     for i in range(len(data)):
-        behavQ_results.append(data.iloc[i][["question", "criteria"]].to_dict())
+        behavQ_results.append(data.iloc[i][["questions", "criteria"]].to_dict())
 
     """ behavQ Answer Evaluation """
     for i, behavQ in enumerate(behavQ_results):
-        print(f'### behavQ {i+1} : {behavQ_results[i]["question"]}')
+        print(f'### behavQ {i+1} : {behavQ_results[i]["questions"]}')
         # answe = input(f'Answer {i+1} : ')
         answer = "I DON'T KNOW"
         eval_results, token = chat_model.answer_evaluation(
             type="behavQ",
-            question=behavQ["question"],
+            question=behavQ["questions"],
             criteria=behavQ["criteria"],
             answer=answer,
         )
         behavQ_results[i].update(
-            {"answer": answer, "evaluation": eval_results, "type": "behavQ"}
+            {"answers": answer, "evaluation": eval_results, "type": "behavQ"}
         )
         total_token += token
 
