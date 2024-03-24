@@ -8,7 +8,7 @@ class pipelines:
     def __init__(self, foundation_model):
         self.chat = OpenAIChat(model_name=foundation_model)
         self.prompts_path = os.path.join(
-            os.path.dirname(pathlib.Path(__file__)), "prompts/"
+            os.path.dirname(pathlib.Path(__file__)), "kor_prompts/"
         )
 
         with open(
